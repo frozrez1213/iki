@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Vienna — Home</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="foto/memori7.jpeg">
+</head>
+
+<!-- Floating Music Player -->
+<div class="music-widget">
+  <div class="wave">
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
+  <div class="label">Playing...</div>
+</div>
+
+<audio id="bgMusic" src="LIRIK PAYUNG TEDUH - UNTUK PEREMPUAN YANG SEDANG DALAM PELUKAN [7yUGrMt5WbM].mp3" autoplay></audio>
+
+<script>
+  // Auto-play fix
+  document.addEventListener("click", () => {
+    const music = document.getElementById("bgMusic");
+    if (music.paused) music.play();
+  });
+</script>
+
+
+<script>
+const music = document.getElementById("bgMusic");
+
+// Ambil posisi terakhir dari halaman sebelumnya
+let lastTime = localStorage.getItem("musicTime");
+let isPlaying = localStorage.getItem("musicPlaying");
+
+// Jika sebelumnya lagi play, lanjutkan
+music.addEventListener("loadedmetadata", () => {
+    if (lastTime) {
+        music.currentTime = parseFloat(lastTime);
+    }
+    if (isPlaying === "true") {
+        music.play();
+    }
+});
+
+// Simpan posisi musik setiap 500ms
+setInterval(() => {
+    localStorage.setItem("musicTime", music.currentTime);
+    localStorage.setItem("musicPlaying", !music.paused);
+}, 500);
+
+// Pastikan musik tetap loop
+music.addEventListener("ended", () => {
+    music.currentTime = 0;
+    music.play();
+});
+</script>
+
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <div class="brand"><a href="index.html">For Vienna ✦</a></div>
+
+    <nav class="top-nav">
+      <a class="active" href="index.html">Home</a>
+      <a href="abouther.html">About Her</a>
+      <a href="memories.html">Memories</a>
+      <a href="diary.html">Diary</a>
+      <a href="love-data.html">Countdown</a>
+    </nav>
+
+    <button id="menuToggle" class="menu-toggle">☰</button>
+  </div>
+</header>
+
+<!-- ==== HERO WITH YOUR PHOTO ==== -->
+<section class="hero-photo-section container">
+
+  <div class="hero-text">
+    <h1>HIIIII!!!!!</h1>
+    <p class="lead">Webstie Kecil Kecilann hihihi, AKU BUAT INI 1 minggu!!!</p>
+
+    <div class="hero-actions">
+      <a class="btn" href="abouther.html">About Her</a>
+      <a class="btn ghost" href="memories.html">Start Exploring</a>
+    </div>
+  </div>
+
+  <div class="hero-image">
+    <img src="foto/upper.jpg" alt="Our Photo">
+  </div>
+
+</section>
+
+<!-- ===== SPOTIFY SECTION (scroll dikit baru muncul) ===== -->
+<section id="spotify-section" style="padding-top: 40px; text-align: center;">
+    <h2 style="color: #fff; font-size: 1.8rem; margin-bottom: 20px;">
+        Our Spotify Playlist 🎧
+    </h2>
+
+   <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/4CowKGkikeWhkHtdAqIDcf?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+</section>
+
+
+<footer class="footer">
+  <p>Made with ♥ — Buat Vienna</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

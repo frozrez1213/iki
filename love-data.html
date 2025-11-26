@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>For Vienna — Countdown</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="foto/memori7.jpeg">
+</head>
+<audio id="bgMusic" src="LIRIK PAYUNG TEDUH - UNTUK PEREMPUAN YANG SEDANG DALAM PELUKAN [7yUGrMt5WbM].mp3" autoplay></audio>
+
+<script>
+const music = document.getElementById("bgMusic");
+
+// Ambil posisi terakhir dari halaman sebelumnya
+let lastTime = localStorage.getItem("musicTime");
+let isPlaying = localStorage.getItem("musicPlaying");
+
+// Jika sebelumnya lagi play, lanjutkan
+music.addEventListener("loadedmetadata", () => {
+    if (lastTime) {
+        music.currentTime = parseFloat(lastTime);
+    }
+    if (isPlaying === "true") {
+        music.play();
+    }
+});
+
+// Simpan posisi musik setiap 500ms
+setInterval(() => {
+    localStorage.setItem("musicTime", music.currentTime);
+    localStorage.setItem("musicPlaying", !music.paused);
+}, 500);
+
+// Pastikan musik tetap loop
+music.addEventListener("ended", () => {
+    music.currentTime = 0;
+    music.play();
+});
+</script>
+
+
+<body>
+<header class="site-header">
+  <div class="container header-inner">
+    <div class="brand"><a href="index.html">For Vienna ✦</a></div>
+    <nav class="top-nav">
+      <a href="index.html">Home</a>
+      <a href="abouther.html">About Her</a>
+      <a href="memories.html">Memories</a>
+      <a href="diary.html">Diary</a>
+      <a class="active" href="love-data.html">Countdown</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container countdown-container">
+
+  <h1 class="page-title">Special Countdown</h1>
+  <p class="page-sub">Counting the moments to our special days together.</p>
+
+  <div class="countdown-grid">
+
+    <!-- Her Birthday -->
+    <div class="countdown-card">
+      <h2>Ulang Tahun Vieennaaaa 🎂</h2>
+      <div id="herCountdown" class="count-box">Loading…</div>
+    </div>
+
+    <!-- Anniversary -->
+    <div class="countdown-card">
+      <h2> Anniversary kitaaaa 💞</h2>
+      <div id="annCountdown" class="count-box">Loading…</div>
+    </div>
+
+    <!-- My Birthday -->
+    <div class="countdown-card">
+      <h2>ulang tahun akuu dongg🎉</h2>
+      <div id="myCountdown" class="count-box">Loading…</div>
+    </div>
+
+  </div>
+
+</main>
+
+<footer class="footer">
+  <p>Made with ♥ — Buat Vienna</p>
+</footer>
+
+<script>
+// =====================
+// FIXED COUNTDOWN SCRIPT ✔
+// =====================
+
+// Tanggal Event (format: MM-DD)
+const herBirthday = "07-12";
+const anniversary = "07-08";
+const myBirthday = "03-09";
+
+// Elemen box
+const elHer = document.getElementById("herCountdown");
+const elAnn = document.getElementById("annCountdown");
+const elMe = document.getElementById("myCountdown");
+
+// Fungsi hitung countdown
+function calculateCountdown(monthDay) {
+    let now = new Date();
+    let year = now.getFullYear();
+
+    let target = new Date(`${year}-${monthDay}`);
+
+    if (target < now) {
+        target = new Date(`${year + 1}-${monthDay}`);
+    }
+
+    let diff = target - now;
+
+    let days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    let hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    let mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    let secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+    return { days, hours, mins, secs };
+}
+
+// Update Box tiap 1 detik
+setInterval(() => {
+    let h = calculateCountdown(herBirthday);
+    elHer.innerHTML = `${h.days} days<br>${h.hours} hrs ${h.mins} min ${h.secs}s`;
+
+    let a = calculateCountdown(anniversary);
+    elAnn.innerHTML = `${a.days} days<br>${a.hours} hrs ${a.mins} min ${a.secs}s`;
+
+    let m = calculateCountdown(myBirthday);
+    elMe.innerHTML = `${m.days} days<br>${m.hours} hrs ${m.mins} min ${m.secs}s`;
+}, 1000);
+</script>
+
+</body>
+</html>

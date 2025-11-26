@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>For Vienna — Memories</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="foto/memori7.jpeg">
+</head>
+
+
+<audio id="bgMusic" src="LIRIK PAYUNG TEDUH - UNTUK PEREMPUAN YANG SEDANG DALAM PELUKAN [7yUGrMt5WbM].mp3" autoplay></audio>
+<script>
+const music = document.getElementById("bgMusic");
+
+// Ambil posisi terakhir dari halaman sebelumnya
+let lastTime = localStorage.getItem("musicTime");
+let isPlaying = localStorage.getItem("musicPlaying");
+
+// Jika sebelumnya lagi play, lanjutkan
+music.addEventListener("loadedmetadata", () => {
+    if (lastTime) {
+        music.currentTime = parseFloat(lastTime);
+    }
+    if (isPlaying === "true") {
+        music.play();
+    }
+});
+
+// Simpan posisi musik setiap 500ms
+setInterval(() => {
+    localStorage.setItem("musicTime", music.currentTime);
+    localStorage.setItem("musicPlaying", !music.paused);
+}, 500);
+
+// Pastikan musik tetap loop
+music.addEventListener("ended", () => {
+    music.currentTime = 0;
+    music.play();
+});
+</script>
+
+
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <div class="brand"><a href="index.html">For Vienna ✦</a></div>
+
+    <nav class="top-nav">
+      <a href="index.html">Home</a>
+      <a href="abouther.html">About Her</a>
+      <a class="active" href="memories.html">Memories</a>
+      <a href="diary.html">Diary</a>
+      <a href="love-data.html">Countdown</a>
+    </nav>
+
+  </div>
+</header>
+
+<main class="container">
+
+  <section class="memory-section card big-card" style="text-align:center; padding:80px 20px;">
+    
+    <h2 style="font-size:2.4rem; margin-bottom:10px;">🚧 UNDER MAINTENANCE</h2>
+
+    <p style="font-size:1.2rem; color:#dcdcdc;">
+      Kisah kita belum selesai…
+    </p>
+
+    <p style="opacity:.7; margin-top:8px; font-size:1rem;">
+      Tunggu sebentar yaa, semua memori kita lagi aku susun supaya makin cantikk buat kamu ♥
+    </p>
+
+  </section>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diary — Untuk Vienna</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="foto/memori7.jpeg">
+
+  <style>
+    .diary-container {
+      max-width: 850px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .chapter-card {
+      background: rgba(255,255,255,0.05);
+      padding: 20px 25px;
+      border-radius: 12px;
+      margin-bottom: 18px;
+      cursor: pointer;
+      transition: 0.25s ease;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .chapter-card:hover {
+      background: rgba(255,255,255,0.08);
+    }
+
+    .chapter-title {
+      font-size: 20px;
+      color: #b5d8ff;
+      font-weight: 600;
+    }
+
+    .chapter-content {
+      margin-top: 12px;
+      font-size: 16px;
+      line-height: 1.6;
+      color: #cfd9e6;
+      display: none;
+      opacity: 0;
+      transition: opacity .3s ease;
+    }
+
+    .chapter-card.open .chapter-content {
+      display: block;
+      opacity: 1;
+    }
+
+  </style>
+</head>
+
+<audio id="bgMusic" src="LIRIK PAYUNG TEDUH - UNTUK PEREMPUAN YANG SEDANG DALAM PELUKAN [7yUGrMt5WbM].mp3" autoplay></audio>
+
+<script>
+const music = document.getElementById("bgMusic");
+
+// Ambil posisi terakhir dari halaman sebelumnya
+let lastTime = localStorage.getItem("musicTime");
+let isPlaying = localStorage.getItem("musicPlaying");
+
+// Jika sebelumnya lagi play, lanjutkan
+music.addEventListener("loadedmetadata", () => {
+    if (lastTime) {
+        music.currentTime = parseFloat(lastTime);
+    }
+    if (isPlaying === "true") {
+        music.play();
+    }
+});
+
+// Simpan posisi musik setiap 500ms
+setInterval(() => {
+    localStorage.setItem("musicTime", music.currentTime);
+    localStorage.setItem("musicPlaying", !music.paused);
+}, 500);
+
+// Pastikan musik tetap loop
+music.addEventListener("ended", () => {
+    music.currentTime = 0;
+    music.play();
+});
+</script>
+
+
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand"><a href="index.html">For Vienna ✦</a></div>
+      <nav class="top-nav">
+         <a href="index.html">Home</a>
+        <a href="abouther.html">About Her</a>
+        <a href="memories.html">Memories</a>
+        <a class="active" href="diary.html">Diary</a>
+        <a href="love-data.html">Countdown</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="diary-container">
+    <h1>Diary — Chapters</h1>
+    <p>Short stories & soft moments written just for her.</p>
+
+    <!-- CHAPTER 1 -->
+    <div class="chapter-card">
+      <div class="chapter-title">Chapter 01 — Graduation</div>
+      <div class="chapter-content">
+        The moment everything began.<br><br>
+        8 Juli 2025
+
+Hari ini entah kenapa aku ingin menuliskan semuanya. Mungkin supaya aku sendiri bisa memahami apa yang sebenarnya terjadi.
+
+Aku masih ingat jelas saat graduation itu… saat pertama kali aku melihatnya. Dia terlihat cantik sekali—cantik dengan cara yang membuatku bertanya-tanya, bagaimana mungkin seseorang bisa secantik itu sementara aku hanya manusia biasa yang bahkan sering minder dengan diri sendiri.
+
+Aku mencoba mendekatinya lewat berbagai cara. Pada akhirnya, aku memberanikan diri meng-DM akun Instagramnya. Sebenarnya aku cuma coba-coba… siapa tahu aku bisa sedikit saja menarik perhatiannya. Awalnya aku cuma mau caper, tapi lucunya aku bahkan tidak punya topik obrolan. Sampai akhirnya aku menggunakan satu-satunya hal yang aku tahu tentang dia—game yang dia suka: Grow A Garden.
+
+Dari situlah semuanya mulai berubah.
+
+Kami mulai sering chat, saling kirim pap, dan entah sejak kapan, rasanya aku selalu menunggu notifikasi darinya. Aku menikmati setiap percakapan itu, seakan dunia tiba-tiba jadi lebih cerah.
+
+Dan kemudian… sampailah hari ini, 8 Juli 2025. Hari ketika semuanya terasa berbeda. Hari ketika aku mulai menyadari bahwa kedekatan kecil yang berawal dari game sederhana itu ternyata membawa perasaan yang jauh lebih dalam dari yang pernah aku bayangkan.
+      </div>
+    </div>
+
+    <!-- CHAPTER 2 -->
+    <div class="chapter-card">
+      <div class="chapter-title">Chapter 02 — How Much Imma Fall In Love With Youuuuuu</div>
+      <div class="chapter-content">
+        Why imma fall in love with you? Am i very lucky? i say to god.<br><br>
+        Beberapa hari itu aku terus memikirkan satu hal: perasaanku dari aku. Semakin lama kami dekat, semakin sulit bagiku untuk pura-pura biasa saja. Aku ingin jujur… tapi aku juga takut.
+
+Aku terus bertanya pada diriku sendiri, “Bagaimana kalau dia menolak? Bagaimana kalau semuanya sia-sia dan hubungan kami jadi canggung?” Pikiran itu menghantuiku, membuatku ragu, membuatku bimbang.
+
+Tapi pada akhirnya aku memberanikan diri. Aku pikir, kalau aku tidak mencoba sekarang, aku akan menyesal selamanya.
+
+Lalu aku menyatakan isi hatiku.
+
+Dan… BOOMMMM BALALALALLALALA
+
+Ternyata… dia suka balik sama aku.
+
+Aku sampai tidak percaya. Aku kaget, heran, dan bahkan sempat ketawa sendiri, “Kok bisa dia suka sama aku juga, wkwk.” Rasanya seperti mimpi. Seseorang yang dulu hanya bisa aku kagumi dari jauh, ternyata menyimpan perasaan yang sama.
+
+Hari ini benar-benar jadi salah satu hari paling gila dan paling indah dalam hidup aku.
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    const cards = document.querySelectorAll(".chapter-card");
+
+    cards.forEach(card => {
+      card.addEventListener("click", () => {
+        card.classList.toggle("open");
+      });
+    });
+  </script>
+</body>
+</html>
